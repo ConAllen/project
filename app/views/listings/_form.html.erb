@@ -1,0 +1,35 @@
+<%= form_for(@listing) do |f| %>
+  <% if @listing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+
+      <ul>
+      <% @listing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%# "form-group" is a bootstrap function which added spacing to our form we added it to all our scaffold elements below %>
+   <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+   <div class="form-group">
+    <%= f.label :description %><br>
+    <%#"form-control" class was a bootstrap element for styling our form %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+   <div class="form-group">
+    <%= f.label :category %><br>
+    <%= f.text_field :category, class: "form-control" %>
+  </div>
+   <div class="form-group">
+    <%= f.label :price %><br>
+    <%= f.text_field :price, class: "form-control" %>
+  </div>
+   <div class="form-group">
+<%# we then added a bootstap class to the buttons the below changes the look and color to our submint button  %>
+    <%= f.submit class: "btn btn-primary"%>
+  </div>
+<% end %>
