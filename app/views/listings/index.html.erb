@@ -1,34 +1,23 @@
-<p id="notice"><%= notice %></p>
+<%# the below code loops through the listings %>
+<%# the below code is for the grid table - bootstrap%>
 
-<h1>Listing Listings</h1>
+<div class="row">
+<% @listings.each do |listing| %>
+  <div class="col-md-3">
+      <%= link_to (image_tag listing.image_url, :style => "height:150px"),listing %><br>
+      <%= listing.name %><br>
+      <br>
+      <%= listing.description %><br>
+      <%= listing.category %><br>
+      <%= listing.price %><br>
+      <%= link_to 'Show', listing, class:" btn btn-link" %><br>
+      <%= link_to 'Edit', edit_listing_path(listing),class:" btn btn-link" %><br>
+      <%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' },class:" btn btn-link" %>
+</div>
+ <% end %>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Category</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @listings.each do |listing| %>
-      <tr>
-        <td><%= listing.name %></td>
-        <td><%= listing.description %></td>
-        <td><%= listing.category %></td>
-        <td><%= listing.price %></td>
-        <%# below we styled our buttons "show,edit,Destory" using bootstraps link button %>
-        <td><%= link_to 'Show', listing, class:" btn btn-link" %></td>
-        <td><%= link_to 'Edit', edit_listing_path(listing),class:" btn btn-link" %></td>
-        <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' },class:" btn btn-link" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New Listing', new_listing_path,class:" btn btn-link" %>
+<%= link_to 'New Listing', new_listing_path, class: " btn btn-link" %>
