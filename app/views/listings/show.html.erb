@@ -1,28 +1,32 @@
-<p id="notice"><%= notice %></p>
 
+
+
+
+<p id="notice"><%= notice %></p>
+<strong></strong>
+<%= link_to (image_tag @listing.image_url, :style => "height:300px"),
+@listing %>
 <p>
-  <strong>Name:</strong>
+  <strong><h4>Product Listing:<h4></strong>
   <%= @listing.name %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>Description:</strong><br>
   <%= @listing.description %>
 </p>
 
 <p>
-  <strong>Category:</strong>
+  <strong>Category:</strong><br>
   <%= @listing.category %>
 </p>
 
 <p>
-  <strong>Price:</strong>
-  <%= @listing.price %>
+  <strong>Price:</strong><br>
+  <%=@listing.price %>
 </p>
 <p>
-  <strong></strong>
-  <%= link_to (image_tag @listing.image_url, :style => "height:300px"),
-@listing %>
+
 </p>
 <%# below we styled our buttons "edit, back" using bootstraps link button %>
 <%= link_to 'Edit', edit_listing_path(@listing),class:"btn btn-link" %> |

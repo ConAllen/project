@@ -1,18 +1,29 @@
 <%# the below code loops through the listings %>
 <%# the below code is for the grid table - bootstrap%>
+<%# the below code is for for our index page. our listings are now in grid system looking well. - bootstrap%>
 
 <div class="row">
 <% @listings.each do |listing| %>
   <div class="col-md-3">
-      <%= link_to (image_tag listing.image_url, :style => "height:150px"),listing %><br>
-      <%= listing.name %><br>
+    <div class="thumbnail">
+        <%= link_to (image_tag listing.image_url, :style => "height:150px"),listing %><br>
+         <div class="caption">
+           <h3><h4>Listing Name</h4><%= listing.name %><br></h3><br>
+           <p><h4>Discription</h4><%= listing.description %><p><br>
+            <p><h4>Category</h4><%= listing.category %><p><br>
+           <p><h4>Price</h4><%= listing.price %><p><br>
+           <p><%= link_to 'Show', listing, class:" btn btn-link" %><p>
+            <p><%= link_to 'Edit', edit_listing_path(listing),class:" btn btn-link" %><p>
+            <p><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' },class:" btn btn-link" %><p>
+         </div>
+       </div>
+
+
+
       <br>
-      <%= listing.description %><br>
-      <%= listing.category %><br>
-      <%= listing.price %><br>
-      <%= link_to 'Show', listing, class:" btn btn-link" %><br>
-      <%= link_to 'Edit', edit_listing_path(listing),class:" btn btn-link" %><br>
-      <%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' },class:" btn btn-link" %>
+
+
+<p id="notice"><%= notice %></p>
 </div>
  <% end %>
 </div>
