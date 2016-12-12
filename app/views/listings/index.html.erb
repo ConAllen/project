@@ -6,16 +6,18 @@
 <% @listings.each do |listing| %>
   <div class="col-md-3">
     <div class="thumbnail">
+      <%=image_tag listing.image.url(:medium)%></td>
         <%= link_to (image_tag listing.image_url, :style => "height:150px"),listing %><br>
          <div class="caption">
            <h3><h4>Listing Name</h4><%= listing.name %><br></h3><br>
+           <%= "Sold By #{listing.user.name}" %></p>
            <p><h4>Discription</h4><%= listing.description %><p><br>
             <p><h4>Category</h4><%= listing.category %><p><br>
            <p><h4>Price</h4><%= listing.price %><p><br>
-           <p><%= link_to 'Show', listing, class:" btn btn-link" %><p>
-            <p><%= link_to 'Edit', edit_listing_path(listing),class:" btn btn-link" %><p>
-            <p><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' },class:" btn btn-link" %><p>
-         </div>
+           <p><%= link_to 'Show', listing, class:" btn btn-link" %><p><p><%= link_to 'Edit', edit_listing_path(listing),class:" btn btn-link" %><p>
+           <p><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' },class:" btn btn-link" %><p>
+        </div>
+
        </div>
 
 
