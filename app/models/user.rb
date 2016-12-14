@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
           validates :name, presence: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+
 # this means a listing exsisting, depends on the user. if the user is deleted the listing will also be deleted
          has_many :listings, dependent: :destroy
 end

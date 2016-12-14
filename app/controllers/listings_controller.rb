@@ -1,11 +1,17 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
-#the below tag is so users have to be signed in to create new listings, edit update or destroy
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+# the below tag is so users have to be signed in to create new listings, edit update or destroy
+  before_action :authenticate_user!, only: [:seller, :new, :create, :edit, :update, :destroy]
   before_action :check_user, only: [:edit, :update, :destroy]
   # GET /listings
   # GET /listings.json
+
+# this tells the controller when a user goes to the new  seller url the owner of the listing is the current  signed in user
+def seller
+  @listings = Listing.where(user: current_user)
+end
+
   def index
     @listings = Listing.all
   end
@@ -28,6 +34,8 @@ class ListingsController < ApplicationController
   # POST /listings.json
   def create
     @listing = Listing.new(listing_params)
+
+# this command sets the the user id, to the current user. "current_user "is a devise
     @listing.user_id = current_user.id
 
     respond_to do |format|
