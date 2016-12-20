@@ -1,33 +1,38 @@
 
-
-
-
 <p id="notice"><%= notice %></p>
+
 <%= image_tag @listing.image.url, :style => "height:250px"%>
 <strong></strong>
 <%= link_to (image_tag @listing.image_url, :style => "height:300px"),
 @listing %>
 <p>
+  <br>
   <strong><h4>Product Listing:<h4></strong>
+
   <%= @listing.name %>
 </p>
 
 <p>
+  <br>
   <strong>Description:</strong><br>
+  <br>
   <%= @listing.description %>
 </p>
-
+<br>
 <p>
   <strong>Category:</strong><br>
+  <br>
+
   <%= @listing.category %>
 </p>
-
+<br>
 <p>
   <strong>Price:</strong><br>
+  <br>
   <%=@listing.price %>
 </p>
 <p>
-
+<%=link_to "Buy It Now", new_listing_order_path(@listing),class:"btn btn-primary"%>
 </p>
 <% if current_user == @listing.user %>
  <%# below we styled our buttons "edit, back" using bootstraps link button %>

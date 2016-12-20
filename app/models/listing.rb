@@ -7,7 +7,11 @@ class Listing < ActiveRecord::Base
   #the blow model validation makes sure the price is greater the 0
   validates :price, numericality: { greater_than: 0 }
   validates :name, presence: true
+
 # each listing belongs to a user
   belongs_to :user
+
+#each listing can have many orders
+  has_many :orders
 
 end

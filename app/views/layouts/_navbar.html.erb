@@ -33,7 +33,7 @@
 profile page when they are signed in.. The else statement is for when the user is signed out%>
       <% if user_signed_in? %>
       <%# the below link routes the manage listing tab to the seller page%>
-      <li><%= link_to "My Listing",seller_path %></li>
+      <li><%= link_to "Manage Listing's",seller_path %></li>
       <li><%= link_to "Sign Out",destroy_user_session_path, method: :delete %></li>
       <li><%= link_to "Edit Profile",edit_user_registration_path %></li>
       <% else %>
