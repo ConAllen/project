@@ -1,0 +1,34 @@
+<%# the below page is a table taken from the manage listing page. here
+we will change it to suit a sales history page%>
+<div>
+  <h2>Your Sales History</h2>
+</div>
+<table class="table table-striped table-bordered">
+  <tr>
+    <th>Image</th>
+    <th>Item</th>
+    <th>Price</th>
+    <th>Customer</th>
+    <th>Date sold</th>
+  </tr>
+
+  <% @orders.each do |order| %>
+    <tr>
+      <td>
+      <%= image_tag order.listing.image.url(:thumb) %></td>
+      <td><%= order.listing.name %></td>
+      <td><%= order.listing.price%></td>
+      <td><%= order.buyer.name %></td>
+      <%#THE BELOW CODE IS FOR RUBY DATE. FOUND ON rubydoc%>
+      <td><%= order.created_at.strftime("%-d %B, %Y") %></td>
+      <td>
+
+    </tr>
+  <% end %>
+</table>
+
+<br>
+
+<% if user_signed_in? %>
+  <%= link_to 'New Listing', new_listing_path, class: "btn btn-link", data: { no_turbolink: true } %>
+<% end %>

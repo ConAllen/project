@@ -3,41 +3,36 @@
 <%# the below code is for for our index page. our listings are now in grid system looking well. - bootstrap%>
 
 <div class="row">
-<% @listings.each do |listing| %>
-  <div class="col-md-3">
+  <% @listings.each do |listing| %>
+    <div class="col-md-3">
     <div class="thumbnail">
 
-      <%=image_tag listing.image.url, :style => "height:300px"%></td>
-        <%= link_to (image_tag listing.image_url, :style => "height:10px"),listing %><br>
-         <div class="caption">
+    <%=image_tag listing.image.url, :style => "height:300px"%></td>
+    <%= link_to (image_tag listing.image_url, :style => "height:10px"),listing %><br>
+        <div class="caption">
            <h3><h4>Listing Name</h4><%= listing.name %><br></h3><br>
            <%# the below code has will desplay the name to the user%>
            <%= "Sold By #{listing.user.name}" %></p>
            <%#<p><h4>Discription</h4><%= listing.description %><p><br>
             <p><h4>Category</h4><%= listing.category %><p><br>
-           <p><h4>Price</h4><%= listing.price %><p><br>
-           <p><%= link_to 'Show', listing, class:" btn btn-link" %><p>
+            <p><h4>Price</h4><%= listing.price %><p><br>
+            <p><%= link_to 'Show', listing, class:" btn btn-link" %><p>
              <%#the below code hides the edit and delete tag to customer who arent the person who created the ad%>
-                <% if (user_signed_in?) && (current_user == listing.user) %>
-                <p><%= link_to 'Edit', edit_listing_path(listing),class:" btn btn-link" %><p>
-                <p><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' },class:" btn btn-link" %><p>
-              <% end %>
+            <% if (user_signed_in?) && (current_user == listing.user) %>
+              <p><%= link_to 'Edit', edit_listing_path(listing),class:" btn btn-link" %><p>
+              <p><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' },class:" btn btn-link" %><p>
+            <% end %>
          </div>
        </div>
-
-
-
       <br>
-
-
-<p id="notice"><%= notice %></p>
-</div>
- <% end %>
+      <p id="notice"><%= notice %></p>
+      </div>
+<% end %>
 </div>
 
 
 
 <%#the code below hides the new listng button unless your signed in%>
    <% if user_signed_in?%>
-<%= link_to 'New Listing', new_listing_path, class: " btn btn-link" %>
-<% end %>
+   <%= link_to 'New Listing', new_listing_path, class: " btn btn-link" %>
+   <% end %>

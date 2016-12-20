@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   # this creates a new URL a local host/ seller URL
   get 'seller' => "listings#seller"
 
+# the below two will set up two urls  - sales and purchases
+  get 'sales' => "orders#sales"
+  get 'purchases' =>"orders#purchases"
   root 'listings#index'
 #
 
