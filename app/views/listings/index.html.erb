@@ -20,7 +20,7 @@
            <%#<p><h4>Discription</h4><%= listing.description %><p><br>
           <p><h4>Category</h4><%= listing.category %><p><br>
            <p><h4>Price</h4><%= listing.price %><p><br>
-           <p><%= link_to 'Show', listing, class:" btn btn-link" %><p>
+           <p><%= link_to 'Show', listing, class:" btn btn-primary" %><p>
              <%#the below code hides the edit and delete tag to customer who arent the person who created the ad%>
       <% if (user_signed_in?) && (current_user == listing.user) %>
       <p><%= link_to 'Edit', edit_listing_path(listing),class:" btn btn-link" %><p>
@@ -37,5 +37,5 @@
 
 <%#the code below hides the new listng button unless your signed in%>
    <% if user_signed_in?%>
-<%= link_to 'New Listing', new_listing_path, class: " btn btn-link" %>
+<%= link_to 'New Listing', new_listing_path, class: " btn btn-success" %>
 <% end %>
