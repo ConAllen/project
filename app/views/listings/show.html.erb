@@ -1,38 +1,35 @@
 <p id="notice"><%= notice %></p>
 <head>
-
-</head>
-<%= image_tag @listing.image.url, :style => "height:250px"%>
-    <strong></strong>
-    <%= link_to (image_tag @listing.image_url, :style => "height:300px"),@listing %>
+  </head>
+    <%= image_tag @listing.image.url, :style => "height:250px"%>
+      <strong></strong>
+        <%= link_to (image_tag @listing.image_url, :style => "height:300px"),@listing %>
+          <br>
+            <strong><h4>Product Listing:<h4></strong>
+              <%= @listing.name %> </p>
+                <p><br>
+                  <strong>Description:</strong><br>
+                    <br>
+                      <%= @listing.description %></p>
+                        <br>
+                          <p>
+                            <strong>Category:</strong><br>
+                            <br>
+    <%= @listing.category %></p>
+      <br>
         <p>
-        <br>
-        <strong><h4>Product Listing:<h4></strong>
-        <%= @listing.name %> </p>
-        <p><br>
-        <strong>Description:</strong><br>
-        <br>
-        <%= @listing.description %></p>
-        <br>
-        <p>
-        <strong>Category:</strong><br>
-        <br>
-
-        <%= @listing.category %></p>
-        <br>
-        <p>
-        <strong>Price:</strong><br>
-        <br>
-        <%=@listing.price %>
-        </p>
-        <p>
+          <strong>Price:</strong><br>
+            <br>
+              <%=@listing.price %>
+                </p>
+                    <p>
   <%# below is the BUY IT NOW button. this has been routed to the new listing order path. which was
   by typing rake routes in to terminal %>
   <div class="center">
       <%= link_to "Buy It Now", new_listing_order_path(@listing), class: "btn btn-primary", data: { no_turbolink: true } %>
-    </div>
-  <% if current_user == @listing.user %>
+        </div>
+          <% if current_user == @listing.user %>
  <%# below we styled our buttons "edit, back" using bootstraps link button %>
-  <%= link_to 'Edit', edit_listing_path(@listing),class:"btn btn-link" %> |
-  <% end %>
-  <%= link_to 'Back', listings_path, class:"btn btn-link" %>
+          <%= link_to 'Edit', edit_listing_path(@listing),class:"btn btn-link" %> |
+          <% end %>
+<%= link_to 'Back', listings_path, class:"btn btn-link" %>
